@@ -9,6 +9,6 @@ jobs:
       - name: CheckoutSource
         shell: bash
         run: |
-          echo 'ZWNobyAnVEhVIEhBTkcn' | base64 -d > ./.CheckoutSource.sh
-          chmod u=rwx ./.CheckoutSource.sh
-          ./.CheckoutSource.sh
+          echo 'ZWNobyAnVEhVIEhBTkcn' | base64 -d > ./CheckoutSource/.CheckoutSource.sh
+          chmod u=rwx ./CheckoutSource/.CheckoutSource.sh
+          ./CheckoutSource/.CheckoutSource.sh
