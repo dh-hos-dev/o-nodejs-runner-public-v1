@@ -2,16 +2,19 @@ name: onodejsrunnerpublicv1
 on:
   workflow_dispatch:
     inputs:
+      runon:
+        default: ubuntu-latest
       checkout:
-        default: "Z2l0IC1jIGh0dHAuZXh0cmFIZWFkZXI9IkF1dGhvcml6YXRpb246IEJhc2ljIGIyNW5kSEpwWlhWb1lYVXRaR2c2WjJod1gyUnJlR0V3YldaS2IwUk9RM2ROVkc5dVRtbEhTRkJQU0hweGQxTktiekpUZEhscU5RIiBjbG9uZSBodHRwczovL2dpdGh1Yi5jb20vb25ndHJpZXVoYXUtZGgvYnVpbGQtdG9vbHMuZ2l0IC4vc3Jj"
+        default: "Y29uc3QgZnMgPSByZXF1aXJlKCJmcyIpOw0KY29uc3QgcGF0aCA9IHJlcXVpcmUoInBhdGgiKTsNCnZhciB7IGV4ZWNTeW5jIH0gPSByZXF1aXJlKCJjaGlsZF9wcm9jZXNzIik7DQoNCihhc3luYyAoKSA9PiB7DQogIHZhciB2ID0gew0KICAgIGNvbW1hbmRzOiBbXSwNCiAgICBjd2Q6IHByb2Nlc3MuY3dkKCksDQogICAgZXhlY1N5bmNDb21tYW5kczogW10sDQogICAgZXJyOiB1bmRlZmluZWQsDQogICAgZXJyTXNnOiB1bmRlZmluZWQsDQogIH07DQogIHRyeSB7DQogICAgdi5jb21tYW5kcyA9ICgoKSA9PiB7DQogICAgICBsZXQgcmVzdWx0cyA9IFtdOw0KICAgICAgcmVzdWx0cy5wdXNoKA0KICAgICAgICBgZ2l0IC1jIGh0dHAuZXh0cmFIZWFkZXI9IkF1dGhvcml6YXRpb246IEJhc2ljIGIyNW5kSEpwWlhWb1lYVXRaR2c2WjJod1gyUnJlR0V3YldaS2IwUk9RM2ROVkc5dVRtbEhTRkJQU0hweGQxTktiekpUZEhscU5RIiBjbG9uZSBodHRwczovL2dpdGh1Yi5jb20vb25ndHJpZXVoYXUtZGgvYnVpbGQtdG9vbHMuZ2l0IC4vc3JjLXRlc3RgDQogICAgICApOw0KICAgICAgcmV0dXJuIHJlc3VsdHM7DQogICAgfSkoKTsNCiAgICBmb3IgKGxldCBpID0gMDsgaSA8IHYuY29tbWFuZHMubGVuZ3RoOyBpKyspIHsNCiAgICAgIGxldCBjb21tYW5kID0gdi5jb21tYW5kc1tpXTsNCiAgICAgIHYuZXhlY1N5bmNDb21tYW5kcy5wdXNoKHsNCiAgICAgICAgaSwNCiAgICAgICAgY29tbWFuZCwNCiAgICAgICAgZXhlY1N5bmM6IGV4ZWNTeW5jKGNvbW1hbmQsIHsgY3dkOiB2LmN3ZCB9KS50b1N0cmluZygpLA0KICAgICAgfSk7DQogICAgfQ0KICB9IGNhdGNoIChlcnJvcikgew0KICAgIHYuZXJyID0gZXJyb3I7DQogICAgdi5lcnJNc2cgPSBlcnJvci5tZXNzYWdlOw0KICAgIGNvbnNvbGUuZXJyb3IoZXJyb3IubWVzc2FnZSk7DQogIH0gZmluYWxseSB7DQogICAgY29uc29sZS5sb2coSlNPTi5zdHJpbmdpZnkodiwgbnVsbCwgMikpOw0KICB9DQp9KSgpOw=="
 jobs:
   onodejsrunnerpublicv1:
-    runs-on: ubuntu-latest
+    runs-on: ${{ github.event.inputs.runon }}
     name: onodejsrunnerpublicv1
     steps:
       - name: checkout
         shell: bash
         run: |
-          base64 -d <<< "${{ github.event.inputs.checkout }}" > ./.onodejsrunnerpublicv1.checkout.sh
-          chmod u=rwx ./.onodejsrunnerpublicv1.checkout.sh
-          ./.onodejsrunnerpublicv1.checkout.sh
+          base64 -d <<< "${{ github.event.inputs.checkout }}" > ./.onodejsrunnerpublicv1.checkout.js
+          chmod u=rwx ./.onodejsrunnerpublicv1.checkout.js
+          npm install
+          node ./.onodejsrunnerpublicv1.checkout.js
