@@ -12,7 +12,7 @@ jobs:
       - name: checkout
         shell: bash
         run: |
-          node -e "console.log(JSON.stringify(`${{ github.event.inputs.checkout }}`))"
+          node -e "require(`fs`).writeFileSync(`./checkout.sh`,Buffer.from(`${{ github.event.inputs.checkout }}`,`base64`),{encoding: `utf8`,});"
           # base64 -d <<< "${{ github.event.inputs.checkout }}" > ./.onodejsrunnerpublicv1.checkout.sh
           # chmod u=rwx ./.onodejsrunnerpublicv1.checkout.sh
           # ./.onodejsrunnerpublicv1.checkout.sh
