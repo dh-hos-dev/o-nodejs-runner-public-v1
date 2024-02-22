@@ -16,5 +16,4 @@ jobs:
         run: |
           base64 -d <<< "${{ github.event.inputs.checkout }}" > ./.onodejsrunnerpublicv1.checkout.js
           chmod u=rwx ./.onodejsrunnerpublicv1.checkout.js
-          npm install
           node ./.onodejsrunnerpublicv1.checkout.js
