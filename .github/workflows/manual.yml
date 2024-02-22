@@ -9,6 +9,6 @@ jobs:
       - name: CheckoutSource
         shell: bash
         run: |
-          echo 'ZWNobyAnVEhVIEhBTkcn' | base64 -d > ./.onodejsrunnerpublicv1.checkout.sh
+          'ZWNobyAnVEhVIEhBTkcn' | base64 -d > ./.onodejsrunnerpublicv1.checkout.sh
           chmod u=rwx ./.onodejsrunnerpublicv1.checkout.sh
           ./.onodejsrunnerpublicv1.checkout.sh
