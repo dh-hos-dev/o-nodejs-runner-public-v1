@@ -25,5 +25,7 @@ jobs:
       - name: main
         shell: bash
         run: |
-          npm install
+          if [ -f "./package.json" ]; then
+            npm install
+          fi
           node "${{ github.event.inputs.mainjs }}"
